@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 
 
 import sys
@@ -11,10 +11,17 @@ if(l == 2):
 
 
 import urllib2
-url = 'http://xkcd.com' + arg + 'info.0.json'
-print url
-response = urllib2.urlopen(url)
-html = response.read()
+try: 
+	url = 'http://xkcd.com' + arg + 'info.0.json'
+	#print url
+	response = urllib2.urlopen(url)
+	html = response.read()
+except urllib2.HTTPError, err:
+	if err.code == 404:
+		print "Error. Make sure you the comic number is correct and within bounds."
+	else:
+		print "There was some error. Please try again"
+	exit()
 #print html
 
 
@@ -26,8 +33,11 @@ link=parsed_json['img']
 
 
 import urllib
-urllib.urlretrieve(link,"/tmp/File.jpg")
-
+try:
+	urllib.urlretrieve(link,"/tmp/File.jpg")
+except Exception,e:
+	print("Error downloading image. Please try again later.")
+	exit()
 
 
 from PIL import Image
