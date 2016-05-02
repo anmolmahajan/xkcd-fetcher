@@ -4,10 +4,15 @@ Meh. I was bored.
 # Dependencies
 
 xkcd.py requires the following libraries:
+
 1. json
+ 
 2. urllib, urllib2
+
 3. sys
-These should be preinstalled in most cases
+
+These should be preinstalled in most systems.
+
 
 In addition to the libraries required by xkcd.py, xkcdgui.py requires the tk and Tkinter libraries. 
 
